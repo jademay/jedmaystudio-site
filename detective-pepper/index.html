@@ -1,18 +1,103 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en-GB">
 <head>
-  <title>Detective Pepper</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Detective Pepper — JED Games</title>
+  <meta name="description" content="Detective Pepper — cosy logic-grid mysteries starring a black-and-white detective cat." />
+  <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
-  <h1>🐾 Detective Pepper</h1>
-  <p>A cosy logic puzzle game starring a clever cat detective.</p>
+  <div class="container">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-badge">JG</div>
+        <div>JED Games</div>
+      </div>
 
-  <p>
-    Coming soon to the App Store.
-  </p>
+      <nav class="nav-links">
+        <a href="../">Home</a>
+        <a class="active" href="./">Detective Pepper</a>
+      </nav>
+    </header>
 
-  <p>
-    <a href="../">← Back to Jed Games</a>
-  </p>
+    <section class="hero">
+      <div class="card">
+        <h1 class="h1">Detective Pepper</h1>
+        <p class="sub">
+          A cosy detective game of bite-sized mysteries. Use clues to fill a logic grid,
+          then make your final accusation.
+        </p>
+
+        <div class="pills">
+          <span class="pill">Chapter 1: The Young Detective</span>
+          <span class="pill">Logic grid puzzles</span>
+          <span class="pill">Cosy mystery</span>
+          <span class="pill">Pixel art</span>
+        </div>
+
+        <div class="buttons">
+          <a class="btn primary" href="#contact">Join testing list</a>
+          <a class="btn" href="#privacy">Privacy policy</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin:0 0 8px;">Screenshots / art</h2>
+        <p class="small" style="margin:0 0 12px;">
+          Add your four Pepper images into <code>/assets</code> and they’ll show below.
+        </p>
+
+        <div class="gallery">
+          <img src="../assets/pepper-1.png" alt="Detective Pepper pixel art 1" />
+          <img src="../assets/pepper-2.png" alt="Detective Pepper pixel art 2" />
+          <img src="../assets/pepper-3.png" alt="Detective Pepper pixel art 3" />
+          <img src="../assets/pepper-4.png" alt="Detective Pepper pixel art 4" />
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3 style="margin:0 0 6px;">How it plays</h3>
+        <ul class="small" style="margin:10px 0 0; padding-left:18px; line-height:1.6;">
+          <li>Read the clues.</li>
+          <li>Tick/cross combinations in the logic grid.</li>
+          <li>Submit, then choose your final accusation.</li>
+        </ul>
+      </div>
+
+      <div class="card" id="privacy">
+        <h3 style="margin:0 0 6px;">Privacy</h3>
+        <p class="small" style="margin:10px 0 0; line-height:1.6;">
+          <strong>Placeholder:</strong> Detective Pepper does not collect personal data.
+          (We’ll replace this with the final App Store privacy wording before launch.)
+        </p>
+      </div>
+
+      <div class="card" id="contact">
+        <h3 style="margin:0 0 6px;">Contact</h3>
+        <p class="small" style="margin:10px 0 12px; line-height:1.6;">
+          Want to test the game or report a bug?
+        </p>
+
+        <!-- Replace the email address once you’ve set it up -->
+        <a class="btn" href="mailto:hello@jedgames.co.uk">Email: hello@jedgames.co.uk</a>
+
+        <p class="small" style="margin:12px 0 0;">
+          If you don’t have email set up yet, you can temporarily use your Gmail address.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> JED Games</div>
+      <div class="small"><a href="../">Back to Home</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
