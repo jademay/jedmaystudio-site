@@ -154,7 +154,19 @@
       border:1px solid rgba(255,255,255,.14);
       backdrop-filter: blur(6px);
     }
-
+    .shot.phone {
+      aspect-ratio: 9 / 19.5;   /* iPhone-ish portrait */
+      max-width: 320px;         /* make them smaller */
+      width: 100%;
+    }
+    .shot.phone img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;      /* show full image (no cropping) */
+      border-radius: 16px;
+      display: block;
+    }
+    
     .grid{
       display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
       margin:18px 0 10px;
@@ -292,17 +304,15 @@
 
       <div class="twoCol">
         <div class="card" style="padding:14px">
-          <div class="shot">
+          <div class="shot phone">
             <img src="../assets/SH_main.jpeg" alt="Main menu screen">
-            <div>Main Menu screenshot placeholder</div>
             <div class="label">Main Menu</div>
           </div>
         </div>
 
         <div class="card" style="padding:14px">
-          <div class="shot">
+          <div class="shot phone">
             <img src="../assets/SH_puzzle_1.jpeg" alt="Puzzle screen showing the logic grid and tabs">
-            <div>Puzzle screen placeholder</div>
             <div class="label">Logic Grid</div>
           </div>
         </div>
