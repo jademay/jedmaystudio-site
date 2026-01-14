@@ -1,14 +1,96 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en-GB">
 <head>
-  <title>Jed Games</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JED Games</title>
+  <meta name="description" content="JED Games — cosy mysteries, pixel-art vibes, and logic puzzles." />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <h1>Jed Games</h1>
-  <p>Indie puzzle games made with ❤️ hello </p>
+  <div class="container">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-badge">JG</div>
+        <div>JED Games</div>
+      </div>
 
-  <ul>
-    <li><a href="detective-pepper/">Detective Pepper</a></li>
-  </ul>
+      <nav class="nav-links">
+        <a class="active" href="./">Home</a>
+        <a href="./detective-pepper/">Detective Pepper</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1 class="h1">Small games.<br/>Big cosy vibes.</h1>
+        <p class="sub">
+          Welcome to <strong>JED Games</strong> — bite-sized mystery games with pixel art,
+          logic-grid puzzles, and a certain black-and-white detective cat.
+        </p>
+
+        <div class="buttons">
+          <a class="btn primary" href="./detective-pepper/">Explore Detective Pepper</a>
+          <a class="btn" href="./detective-pepper/#contact">Contact</a>
+        </div>
+
+        <div class="pills">
+          <span class="pill">iOS</span>
+          <span class="pill">Logic puzzles</span>
+          <span class="pill">Cosy mystery</span>
+          <span class="pill">Pixel art</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin:0 0 8px;">Now building</h2>
+        <p class="small" style="margin:0 0 12px;">
+          Detective Pepper — a cosy detective game where you solve tiny mysteries
+          using clues and a logic grid.
+        </p>
+        <div class="note">
+          Want to be a tester? Drop me a message and I’ll add you to TestFlight when it’s ready.
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h3 style="margin:0 0 6px;">Detective Pepper</h3>
+        <p class="small" style="margin:0 0 12px;">
+          Short cases. Cute suspects. Real deduction.
+        </p>
+        <a class="btn" href="./detective-pepper/">View game page</a>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px;">Press / screenshots</h3>
+        <p class="small" style="margin:0 0 12px;">
+          I’ll add a proper press kit once the App Store listing is live.
+        </p>
+        <span class="small">Coming soon</span>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px;">Updates</h3>
+        <p class="small" style="margin:0 0 12px;">
+          I’ll post launch updates and new chapter news here.
+        </p>
+        <span class="small">Coming soon</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> JED Games</div>
+      <div class="small">
+        <a href="./detective-pepper/#privacy">Privacy</a> ·
+        <a href="./detective-pepper/#contact">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
