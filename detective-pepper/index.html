@@ -21,6 +21,27 @@
   }
 </style>
   <style>
+  /* Swipeable screenshot row */
+  .shots{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    padding:10px 4px;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .shots::-webkit-scrollbar{ height: 8px; }
+  .shots::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,.12);
+    border-radius: 999px;
+  }
+  .shotWrap{
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: min(320px, 85vw); /* phone-friendly width */
+  }
+</style>
+  <style>
     
     :root{
       --bg:#0f1220;
@@ -295,25 +316,37 @@
     </section>
 
     <section id="screens">
-      <h3 class="sectionTitle">Screenshots</h3>
+  <h3 class="sectionTitle">Screenshots</h3>
+  <p class="sectionText">Swipe to view more →</p>
 
-      <div class="twoCol">
-        <div class="card" style="padding:14px">
-          <div class="shot phone">
-            <img src="../assets/SH_main.jpeg" alt="Main menu screen">
-            <div class="label">Main Menu</div>
-          </div>
-        </div>
+  <div class="card" style="padding:14px">
+    <div class="shots" aria-label="Swipeable screenshot carousel">
 
-        <div class="card" style="padding:14px">
-          <div class="shot phone">
-            <img src="../assets/SH_puzzle_1.jpeg" alt="Puzzle screen showing the logic grid and tabs">
-            <div class="label">Logic Grid</div>
-          </div>
+      <div class="shotWrap">
+        <div class="shot phone">
+          <img src="../assets/SH_main.jpeg" alt="Main menu screen">
+          <div class="label">Main Menu</div>
         </div>
       </div>
-    </section>
 
+      <div class="shotWrap">
+        <div class="shot phone">
+          <img src="../assets/SH_puzzle_1.jpeg" alt="Puzzle screen showing the logic grid and tabs">
+          <div class="label">Logic Grid</div>
+        </div>
+      </div>
+
+      <div class="shotWrap">
+        <div class="shot phone">
+          <img src="../assets/SH_puzzle_3.jpeg" alt="Puzzle screen showing clues">
+          <div class="label">Clues</div>
+        </div>
+      </div>
+
+      <!-- Add more shotWrap blocks as you add screenshots -->
+    </div>
+  </div>
+</section>
     <section id="chapter1">
       <h3 class="sectionTitle">Chapter 1 — The Young Detective</h3>
       <p class="sectionText">
