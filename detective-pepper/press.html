@@ -5,58 +5,164 @@
   <title>Press Kit — Detective Pepper</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../assets/DP_favicon.png">
+
   <style>
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background: #0f1220;
       color: #eef0ff;
+      line-height: 1.6;
     }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 24px }
-    a { color: #7cf0c5 }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    a { color: #7cf0c5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    h1, h2 { margin-top: 28px; }
+
+    .card {
+      background: rgba(22,26,46,.85);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
     }
+
     img {
       width: 100%;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .icon-grid img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      background: #0b0e1a;
+    }
+
+    .meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .meta-list li {
+      margin-bottom: 6px;
+      color: #b9bfdc;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #b9bfdc;
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <a href="index.html">← Back to Detective Pepper</a>
+    <a href="index.html" class="back">← Back to Detective Pepper</a>
 
     <h1>Press Kit</h1>
-    <p>Screenshots and assets for press and content creators.</p>
+    <p>Screenshots and official assets for press, reviewers, and content creators.</p>
 
-    <h2>Download Screenshots</h2>
-    <div class="grid">
-      <a href="../assets/SH_main.jpeg" download>
-        <img src="../assets/SH_main.jpeg" alt="Main Menu">
-      </a>
-      <a href="../assets/SH_puzzle_1.jpeg" download>
-        <img src="../assets/SH_puzzle_1.jpeg" alt="Clues Tab">
-      </a>
-      <a href="../assets/SH_puzzle_1_items.jpeg" download>
-        <img src="../assets/SH_puzzle_1_items.jpeg" alt="Items Tab">
-      </a>
-      <a href="../assets/SH_puzzle_3_comp.jpeg" download>
-        <img src="../assets/SH_puzzle_3_comp.jpeg" alt="Completion Screen">
-      </a>
+    <!-- GAME INFO -->
+    <div class="card">
+      <h2>Game Information</h2>
+      <ul class="meta-list">
+        <li><strong>Title:</strong> Detective Pepper</li>
+        <li><strong>Platform:</strong> iOS</li>
+        <li><strong>Genre:</strong> Logic / Puzzle</li>
+        <li><strong>Developer:</strong> JED Games</li>
+        <li><strong>Release model:</strong> Chapters</li>
+        <li>
+          <strong>Pricing:</strong><br>
+          Chapter 1 – Free<br>
+          Chapters 2–5 – £2.99
+        </li>
+      </ul>
     </div>
 
-    <h2>About</h2>
-    <p>
-      Detective Pepper is a cosy logic-grid puzzle game starring a tiny tuxedo cat detective.
-      Built in SwiftUI for iOS.
-    </p>
+    <!-- APP ICON -->
+    <div class="card">
+      <h2>App Icon</h2>
+      <div class="icon-grid">
+        <a href="../assets/DP_app_icon.png" download>
+          <img src="../assets/DP_app_icon.png" alt="Detective Pepper App Icon">
+        </a>
+        <div>
+          <p>
+            Official app icon for Detective Pepper.
+            Suitable for press articles, store listings, and previews.
+          </p>
+          <p>
+            <a href="../assets/DP_app_icon.png" download>Download app icon (PNG)</a>
+          </p>
+        </div>
+      </div>
+    </div>
 
-    <p><b>Contact:</b> detectivepeppergame@gmail.com</p>
+    <!-- SCREENSHOTS -->
+    <div class="card">
+      <h2>Screenshots</h2>
+      <p>Tap or click an image to download the full-resolution version.</p>
+
+      <div class="grid">
+        <a href="../assets/SH_main.jpeg" download>
+          <img src="../assets/SH_main.jpeg" alt="Main Menu">
+        </a>
+        <a href="../assets/SH_puzzle_1.jpeg" download>
+          <img src="../assets/SH_puzzle_1.jpeg" alt="Clues Tab">
+        </a>
+        <a href="../assets/SH_puzzle_1_items.jpeg" download>
+          <img src="../assets/SH_puzzle_1_items.jpeg" alt="Items Tab">
+        </a>
+        <a href="../assets/SH_puzzle_3_comp.jpeg" download>
+          <img src="../assets/SH_puzzle_3_comp.jpeg" alt="Completion Screen">
+        </a>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="card">
+      <h2>About Detective Pepper</h2>
+      <p>
+        Detective Pepper is a cosy logic-grid puzzle game starring a tiny tuxedo cat detective.
+        Players read clues, eliminate possibilities, and decide who the culprit is in each case.
+      </p>
+      <p>
+        The tone is light and playful, with cartoon mysteries and satisfying deductions rather
+        than graphic content.
+      </p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="card">
+      <h2>Contact</h2>
+      <p>
+        <strong>Email:</strong><br>
+        detectivepeppergame@gmail.com
+      </p>
+    </div>
   </div>
 </body>
 </html>
