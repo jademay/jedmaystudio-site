@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Press Kit — Detective Pepper</title>
+  <link rel="icon" type="image/png" href="../assets/DP_favicon.png">
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      margin: 24px;
+      line-height: 1.6;
+      background: #0f1220;
+      color: #eef0ff;
+    }
+    a { color: #7cf0c5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 900px; margin: 0 auto; }
+    .card {
+      background: #161a2e;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    h1, h2 { margin-top: 0; }
+    ul { padding-left: 18px; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <p><a href="../detectivepepper/index.html">← Back to Detective Pepper</a></p>
+
+    <h1>Detective Pepper — Press Kit</h1>
+
+    <div class="card">
+      <h2>About the Game</h2>
+      <p>
+        Detective Pepper is a cosy logic-grid puzzle game starring a tiny tuxedo
+        cat detective. Players solve bite-sized mysteries by eliminating clues
+        and making a final accusation.
+      </p>
+      <p>
+        Platform: iOS<br>
+        Genre: Logic / Puzzle<br>
+        Price: £2.99 (one-time purchase)<br>
+        Developer: JED Games
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Download Assets</h2>
+      <ul>
+        <li><a href="screenshots/">Screenshots</a></li>
+        <li><a href="DP_app_icon.png">App Icon (PNG)</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:detectivepeppergame@gmail.com">
+        detectivepeppergame@gmail.com</a>
+      </p>
+    </div>
+
+    <p style="opacity:.7;font-size:13px">
+      © <span id="year"></span> Detective Pepper
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
