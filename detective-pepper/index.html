@@ -204,6 +204,35 @@
   scroll-snap-align:center;
 }
 
+/* Swipeable carousel */
+.shots{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 6px 14px;
+}
+.shots::-webkit-scrollbar{ height:10px; }
+.shots::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.16);
+  border-radius: 999px;
+}
+.shotWrap{
+  flex: 0 0 85%;              /* mobile: almost full width */
+  scroll-snap-align: start;
+}
+
+/* tablet */
+@media (min-width: 700px){
+  .shotWrap{ flex-basis: 45%; } /* 2 per view */
+}
+
+/* laptop/desktop */
+@media (min-width: 980px){
+  .shotWrap{ flex-basis: 31.5%; } /* ~3 per view */
+}
+    
 /* Dots */
 .dots{
   display:flex;
