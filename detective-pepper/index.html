@@ -6,43 +6,8 @@
   <meta name="description" content="Detective Pepper is a cosy logic-grid puzzle game starring a tiny tuxedo cat detective. Solve bite-sized mysteries, tick off clues, and make your final accusation." />
   <link rel="icon" type="image/png" href="../assets/DP_favicon.png">
   <title>Detective Pepper — Cosy Logic Puzzles</title>
-<style>
-  .home-link {
-    display: inline-block;
-    margin-bottom: 20px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px;
-    text-decoration: none;
-    color: #444;
-  }
 
-  .home-link:hover {
-    text-decoration: underline;
-  }
-</style>
   <style>
-  /* Swipeable screenshot row */
-  .shots{
-    display:flex;
-    gap:14px;
-    overflow-x:auto;
-    padding:10px 4px;
-    scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .shots::-webkit-scrollbar{ height: 8px; }
-  .shots::-webkit-scrollbar-thumb{
-    background: rgba(255,255,255,.12);
-    border-radius: 999px;
-  }
-  .shotWrap{
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    width: min(320px, 85vw); /* phone-friendly width */
-  }
-</style>
-  <style>
-    
     :root{
       --bg:#0f1220;
       --card:#161a2e;
@@ -69,6 +34,17 @@
     }
     a{color:inherit}
     .wrap{max-width:1080px;margin:0 auto;padding:24px}
+
+    .home-link{
+      display:inline-block;
+      margin-bottom:20px;
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size:14px;
+      text-decoration:none;
+      color:#444;
+    }
+    .home-link:hover{ text-decoration:underline; }
+
     header{
       display:flex;align-items:center;justify-content:space-between;gap:16px;
       padding:12px 0 6px;
@@ -86,6 +62,7 @@
     }
     .brand h1{font-size:18px;margin:0;letter-spacing:.2px}
     .brand span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+
     nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
     .pill{
       text-decoration:none;
@@ -110,12 +87,14 @@
       .hero{grid-template-columns:1fr;gap:14px}
       nav{justify-content:flex-start}
     }
+
     .card{
       background:rgba(22,26,46,.82);
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
+
     .hero .left{padding:26px}
     .kicker{
       display:inline-flex;gap:8px;align-items:center;
@@ -146,10 +125,32 @@
     }
     .hint{margin-top:10px;color:var(--muted);font-size:13px}
 
-    .hero .right{
+    /* Right-side Pepper art grid */
+    .pepper-grid{
       padding:18px;
-      display:grid;gap:12px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
     }
+    .pepper-tile{
+      aspect-ratio: 1 / 1;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    }
+    .pepper-tile img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    @media (max-width: 860px){
+      .pepper-grid{ max-width:360px; margin:0 auto; }
+    }
+
+    /* Screenshot card styles */
     .shot{
       aspect-ratio: 16 / 10;
       border-radius:16px;
@@ -159,14 +160,12 @@
       display:grid;place-items:center;
       color:var(--muted);
       position:relative;
-      max-width: 420px;   
-      margin: 0 auto; 
+      margin: 0 auto;
     }
-    .shot img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 16px;
+    .shot img{
+      width:100%;
+      height:auto;
+      display:block;
     }
     .shot .label{
       position:absolute;left:12px;bottom:12px;
@@ -176,118 +175,62 @@
       border:1px solid rgba(255,255,255,.14);
       backdrop-filter: blur(6px);
     }
-    .shot.phone {
-      aspect-ratio: 9 / 19.5;   /* iPhone-ish portrait */
-      max-width: 320px;         /* make them smaller */
-      width: 100%;
+    .shot.phone{
+      aspect-ratio: 9 / 19.5;
+      width:100%;
+      max-width: 320px;
     }
-    .shot.phone img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;      /* show full image (no cropping) */
-      border-radius: 16px;
-      display: block;
+    .shot.phone img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
     }
-    /* Swipe carousel (if not already set) */
-.shots{
-  display:flex;
-  gap:16px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  padding-bottom: 10px;
-}
-.shots::-webkit-scrollbar{ display:none; }
 
-.shotWrap{
-  flex: 0 0 100%;
-  scroll-snap-align:center;
-}
+    /* ✅ One clean swipeable carousel */
+    .shots{
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 6px 6px 14px;
+    }
+    .shots::-webkit-scrollbar{ height:10px; }
+    .shots::-webkit-scrollbar-thumb{
+      background: rgba(255,255,255,.16);
+      border-radius: 999px;
+    }
+    .shotWrap{
+      flex: 0 0 85%;          /* mobile */
+      scroll-snap-align: start;
+    }
+    @media (min-width: 700px){
+      .shotWrap{ flex-basis: 45%; } /* 2 per view */
+    }
+    @media (min-width: 980px){
+      .shotWrap{ flex-basis: 31.5%; } /* 3 per view */
+    }
 
-/* Swipeable carousel */
-.shots{
-  display:flex;
-  gap:14px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 6px 6px 14px;
-}
-.shots::-webkit-scrollbar{ height:10px; }
-.shots::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.16);
-  border-radius: 999px;
-}
-.shotWrap{
-  flex: 0 0 85%;              /* mobile: almost full width */
-  scroll-snap-align: start;
-}
+    /* ✅ Dots */
+    .dots{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin-top:12px;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      border:none;
+      background: rgba(255,255,255,.25);
+      cursor:pointer;
+      padding:0;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .dot.active{
+      background: var(--accent);
+      transform: scale(1.25);
+    }
 
-/* tablet */
-@media (min-width: 700px){
-  .shotWrap{ flex-basis: 45%; } /* 2 per view */
-}
-
-/* laptop/desktop */
-@media (min-width: 980px){
-  .shotWrap{ flex-basis: 31.5%; } /* ~3 per view */
-}
-    
-/* Dots */
-.dots{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  margin-top:12px;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-  border-radius:999px;
-  border:none;
-  background: rgba(255,255,255,.25);
-  cursor:pointer;
-  padding:0;
-  transition: transform .2s ease, background .2s ease;
-}
-
-.dot.active{
-  background: var(--accent);
-  transform: scale(1.25);
-}
-    /* Right-side Pepper art grid */
-.pepper-grid{
-  padding:18px;
-  display:grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap:12px;
-}
-
-/* Each square image */
-.pepper-tile{
-  aspect-ratio: 1 / 1;          /* forces perfect square */
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.04);
-  box-shadow: 0 8px 20px rgba(0,0,0,.25);
-}
-
-.pepper-tile img{
-  width:100%;
-  height:100%;
-  object-fit: cover;            /* fills the square nicely */
-  display:block;
-}
-
-/* Mobile tweak: slightly smaller */
-@media (max-width: 860px){
-  .pepper-grid{
-    max-width:360px;
-    margin:0 auto;
-  }
-}
     .grid{
       display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
       margin:18px 0 10px;
@@ -314,9 +257,7 @@
     .twoCol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     @media (max-width: 860px){ .twoCol{grid-template-columns:1fr} }
 
-    .list{
-      margin:0;padding-left:18px;color:var(--muted);
-    }
+    .list{ margin:0; padding-left:18px; color:var(--muted); }
     .list li{margin:6px 0}
 
     footer{
@@ -373,25 +314,20 @@
         </p>
       </div>
 
-    <div class="card right pepper-grid">
-
-      <div class="pepper-tile">
-        <img src="../assets/DP_pictures_12.png" alt="Detective Pepper opening the door">
+      <div class="card right pepper-grid">
+        <div class="pepper-tile">
+          <img src="../assets/DP_pictures_12.png" alt="Detective Pepper opening the door">
+        </div>
+        <div class="pepper-tile">
+          <img src="../assets/DP_pictures_5.png" alt="Detective Pepper holding paper">
+        </div>
+        <div class="pepper-tile">
+          <img src="../assets/DP_pictures_7.png" alt="Detective Pepper questioning">
+        </div>
+        <div class="pepper-tile">
+          <img src="../assets/DP_pictures_9.png" alt="Detective Pepper holding her hat">
+        </div>
       </div>
-
-      <div class="pepper-tile">
-        <img src="../assets/DP_pictures_5.png" alt="Detective Pepper holding paper">
-      </div>
-
-      <div class="pepper-tile">
-        <img src="../assets/DP_pictures_7.png" alt="Detective Pepper questioning">
-      </div>
-
-      <div class="pepper-tile">
-        <img src="../assets/DP_pictures_9.png" alt="Detective Pepper holding her hat">
-      </div>
-
-    </div>
     </main>
 
     <section id="features">
@@ -419,79 +355,69 @@
       </div>
     </section>
 
-<section id="screens">
-  <h3 class="sectionTitle">Screenshots</h3>
-  <p class="sectionText">Swipe to view more →</p>
+    <section id="screens">
+      <h3 class="sectionTitle">Screenshots</h3>
+      <p class="sectionText">Swipe to view more →</p>
 
-  <div class="card" style="padding:14px">
-    <div class="shots" aria-label="Swipeable screenshot carousel">
+      <div class="card" style="padding:14px">
+        <div class="shots" aria-label="Swipeable screenshot carousel">
 
-      <div class="shotWrap">
-        <div class="shot phone">
-          <img src="../assets/SH_main.jpeg" alt="Main menu screen">
-          <div class="label">Main Menu</div>
+          <div class="shotWrap">
+            <div class="shot phone">
+              <img src="../assets/SH_main.jpeg" alt="Main menu screen">
+              <div class="label">Main Menu</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot phone">
+              <img src="../assets/SH_puzzle_1.jpeg" alt="Puzzle screen showing the logic grid and clues tab">
+              <div class="label">Clues</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot phone">
+              <img src="../assets/SH_puzzle_1_suspects.jpeg" alt="Puzzle screen showing the logic grid and suspects tab">
+              <div class="label">Suspects</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot phone">
+              <img src="../assets/SH_puzzle_1_locations.jpeg" alt="Puzzle screen showing the logic grid and locations tab">
+              <div class="label">Locations</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot phone">
+              <img src="../assets/SH_puzzle_1_items.jpeg" alt="Puzzle screen showing the logic grid and items tab">
+              <div class="label">Items</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot phone">
+              <img src="../assets/SH_puzzle_3.jpeg" alt="Puzzle screen showing logic grid gameplay">
+              <div class="label">Gameplay</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot phone">
+              <img src="../assets/SH_puzzle_3_comp.jpeg" alt="Puzzle completion screen">
+              <div class="label">Puzzle Completion</div>
+            </div>
+          </div>
+
         </div>
+
+        <!-- Dots get generated by JS -->
+        <div class="dots" aria-label="Screenshot navigation"></div>
       </div>
+    </section>
 
-      <div class="shotWrap">
-        <div class="shot phone">
-          <img src="../assets/SH_puzzle_1.jpeg" alt="Puzzle screen showing the logic grid and clues tab">
-          <div class="label">Clues</div>
-        </div>
-      </div>
-
-      <div class="shotWrap">
-        <div class="shot phone">
-          <img src="../assets/SH_puzzle_1_suspects.jpeg" alt="Puzzle screen showing the logic grid and suspects tab">
-          <div class="label">Suspects</div>
-        </div>
-      </div>
-
-      <div class="shotWrap">
-        <div class="shot phone">
-          <img src="../assets/SH_puzzle_1_locations.jpeg" alt="Puzzle screen showing the logic grid and locations tab">
-          <div class="label">Locations</div>
-        </div>
-      </div>
-
-      <div class="shotWrap">
-        <div class="shot phone">
-          <img src="../assets/SH_puzzle_1_items.jpeg" alt="Puzzle screen showing the logic grid and items tab">
-          <div class="label">Items</div>
-        </div>
-      </div>
-
-      <div class="shotWrap">
-        <div class="shot phone">
-          <img src="../assets/SH_puzzle_3.jpeg" alt="Puzzle screen showing logic grid gameplay">
-          <div class="label">Gameplay</div>
-        </div>
-      </div>
-
-      <div class="shotWrap">
-        <div class="shot phone">
-          <img src="../assets/SH_puzzle_3_comp.jpeg" alt="Puzzle screen showing logic grid submit">
-          <div class="label">Puzzle Completion</div>
-        </div>
-      </div>
-
-      <!-- Add more shotWrap blocks as you add screenshots -->
-    </div>
-
-    <!-- ✅ Dots -->
-    <div class="dots" aria-label="Screenshot navigation">
-      <button class="dot active" type="button" aria-label="Screenshot 1"></button>
-      <button class="dot" type="button" aria-label="Screenshot 2"></button>
-      <button class="dot" type="button" aria-label="Screenshot 3"></button>
-      <button class="dot" type="button" aria-label="Screenshot 4"></button>
-      <button class="dot" type="button" aria-label="Screenshot 5"></button>
-      <button class="dot" type="button" aria-label="Screenshot 6"></button>
-      <button class="dot" type="button" aria-label="Screenshot 7"></button>
-    </div>
-  </div>
-</section>
-
-    
     <section id="chapter1">
       <h3 class="sectionTitle">Chapter 1 — The Young Detective</h3>
       <p class="sectionText">
@@ -521,9 +447,7 @@
 
     <section id="contact">
       <h3 class="sectionTitle">Contact</h3>
-      <p class="sectionText">
-        Want to beta test, report a bug, or suggest a puzzle idea?
-      </p>
+      <p class="sectionText">Want to beta test, report a bug, or suggest a puzzle idea?</p>
 
       <div class="card" style="padding:18px">
         <p style="margin:0 0 8px"><b>Email:</b> <span class="small">detectivepeppergame@gmail.com</span></p>
@@ -534,7 +458,6 @@
     <footer>
       <div>© <span id="year"></span> Detective Pepper</div>
       <div class="links">
-        <!-- Create these pages later if you want -->
         <a href="privacy.html">Privacy</a>
         <a href="contact.html">Contact</a>
       </div>
@@ -544,33 +467,74 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
   <script>
-    const shots = document.querySelector('.shots');
-    const wraps = Array.from(document.querySelectorAll('.shotWrap'));
-    const dots  = Array.from(document.querySelectorAll('.dot'));
+    (function () {
+      const shots = document.querySelector('.shots');
+      const wraps = Array.from(document.querySelectorAll('.shotWrap'));
+      const dotsWrap = document.querySelector('.dots');
 
-    function setActiveDot(index){
-      dots.forEach((d,i) => d.classList.toggle('active', i === index));
-    }
+      if (!shots || wraps.length === 0 || !dotsWrap) return;
 
-    function currentIndex(){
-      const containerLeft = shots.scrollLeft;
-      const width = shots.clientWidth;
-      return Math.round(containerLeft / width);
-    }
-
-    // Update dots while scrolling
-    shots.addEventListener('scroll', () => {
-      setActiveDot(currentIndex());
-    });
-
-    // Click dots to jump
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        wraps[i].scrollIntoView({ behavior: 'smooth', inline: 'center' });
-        setActiveDot(i);
+      // Build dots to match number of slides
+      dotsWrap.innerHTML = '';
+      const dots = wraps.map((_, i) => {
+        const b = document.createElement('button');
+        b.className = 'dot';
+        b.type = 'button';
+        b.setAttribute('aria-label', `Screenshot ${i + 1}`);
+        dotsWrap.appendChild(b);
+        return b;
       });
-    });
+
+      function setActiveDot(index) {
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      }
+
+      function closestIndexToLeft() {
+        const left = shots.getBoundingClientRect().left;
+        let bestIdx = 0;
+        let bestDist = Infinity;
+
+        wraps.forEach((wrap, i) => {
+          const r = wrap.getBoundingClientRect();
+          const dist = Math.abs(r.left - left);
+          if (dist < bestDist) {
+            bestDist = dist;
+            bestIdx = i;
+          }
+        });
+
+        return bestIdx;
+      }
+
+      // Initial active dot
+      setActiveDot(0);
+
+      // Update dots while scrolling (throttled with rAF)
+      let ticking = false;
+      shots.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          setActiveDot(closestIndexToLeft());
+          ticking = false;
+        });
+      }, { passive: true });
+
+      // Click dots to jump
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          wraps[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+          setActiveDot(i);
+        });
+      });
+
+      // Also update on resize (because 1/2/3-per-view changes)
+      window.addEventListener('resize', () => {
+        setActiveDot(closestIndexToLeft());
+      });
+    })();
   </script>
 </body>
 </html>
