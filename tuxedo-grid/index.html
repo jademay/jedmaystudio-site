@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Tuxedo Grid is a cosy cat-themed merge puzzle inspired by classic 2048-style gameplay. Swipe to merge tiles, dodge yarn blocks, and evolve your cats." />
+  <title>Tuxedo Grid — Cosy Cat Merge Puzzle</title>
+
+  <!-- Use a cat favicon (or reuse your existing one) -->
+  <link rel="icon" type="image/png" href="../assets/DP_favicon.png">
+
+  <style>
+    :root{
+      --bg:#0f1220;
+      --card:#161a2e;
+      --text:#eef0ff;
+      --muted:#b9bfdc;
+      --accent:#ff7db8;
+      --accent2:#8aa7ff;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(255,125,184,.14), transparent 55%),
+        radial-gradient(900px 500px at 90% 20%, rgba(138,167,255,.14), transparent 55%),
+        radial-gradient(800px 600px at 50% 100%, rgba(255,255,255,.06), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px}
+
+    .home-link{
+      display:inline-block;
+      margin-bottom:14px;
+      font-size:14px;
+      text-decoration:none;
+      color:var(--muted);
+    }
+    .home-link:hover{color:var(--text);text-decoration:underline}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:8px 0 10px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;text-decoration:none;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:12px;
+      background:linear-gradient(135deg, rgba(255,125,184,.30), rgba(138,167,255,.25));
+      border:1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      display:grid;place-items:center;
+      font-weight:900;
+    }
+    .brand h1{font-size:18px;margin:0;letter-spacing:.2px}
+    .brand span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+    nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .pill{
+      text-decoration:none;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      padding:10px 12px;border-radius:999px;
+      color:var(--text);
+      font-size:14px;
+    }
+    .pill:hover{background:rgba(255,255,255,.07)}
+    .cta{
+      background:linear-gradient(135deg, rgba(255,125,184,.22), rgba(138,167,255,.18));
+      border:1px solid rgba(255,125,184,.35);
+    }
+
+    .card{
+      background:rgba(22,26,46,.82);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:22px;
+      padding:18px 0 10px;
+      align-items:center;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr;gap:14px}
+      nav{justify-content:flex-start}
+    }
+    .hero .left{padding:26px}
+    .kicker{
+      display:inline-flex;gap:8px;align-items:center;
+      font-size:13px;color:var(--muted);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      padding:8px 12px;border-radius:999px;
+      margin-bottom:12px;
+    }
+    .kicker b{color:var(--text)}
+    .title{
+      font-size:42px;line-height:1.08;margin:10px 0 12px;
+      letter-spacing:-.6px;
+    }
+    .subtitle{color:var(--muted);font-size:16px;margin:0 0 18px}
+    .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:12px;
+      text-decoration:none;font-weight:650;font-size:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{
+      border:1px solid rgba(255,125,184,.40);
+      background:linear-gradient(135deg, rgba(255,125,184,.28), rgba(138,167,255,.20));
+    }
+    .hint{margin-top:10px;color:var(--muted);font-size:13px}
+
+    section{padding:22px 0}
+    .sectionTitle{font-size:22px;margin:0 0 10px}
+    .sectionText{color:var(--muted);margin:0 0 14px}
+
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+      margin:18px 0 10px;
+    }
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+    .feature{padding:16px}
+    .feature h3{margin:0 0 6px;font-size:16px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+    .icon{
+      width:38px;height:38px;border-radius:12px;
+      display:grid;place-items:center;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      margin-bottom:10px;
+      font-size:18px;
+    }
+
+    /* Screenshot carousel */
+    .carousel{
+      position:relative;
+      padding:14px;
+    }
+    .shots{
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding:6px 6px 14px;
+      scrollbar-width:none;
+    }
+    .shots::-webkit-scrollbar{display:none}
+    .shotWrap{
+      scroll-snap-align:center;
+      flex:0 0 auto;
+      width:min(320px, 82vw);
+    }
+    .shot{
+      aspect-ratio: 9 / 19.5;
+      width:100%;
+      border-radius:16px;
+      border:1px solid var(--border);
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      position:relative;
+      display:grid;
+      place-items:center;
+    }
+    .shot img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+    .shot .label{
+      position:absolute;left:12px;bottom:12px;
+      font-size:12px;color:rgba(238,240,255,.92);
+      background:rgba(0,0,0,.35);
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(6px);
+    }
+    .dots{
+      display:flex;justify-content:center;gap:8px;
+      padding:10px 0 2px;
+    }
+    .dot{
+      width:7px;height:7px;border-radius:999px;
+      background:rgba(255,255,255,.22);
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .dot.active{
+      background:rgba(255,125,184,.9);
+      border-color: rgba(255,125,184,.55);
+    }
+
+    .twoCol{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width: 900px){ .twoCol{grid-template-columns:1fr} }
+
+    footer{
+      padding:18px 0 26px;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid var(--border);
+      margin-top:18px;
+      display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
+    }
+    .links{display:flex;gap:12px;flex-wrap:wrap}
+    .links a{color:var(--muted);text-decoration:none}
+    .links a:hover{color:var(--text)}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;border:1px solid var(--border)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <a href="../index.html" class="home-link">← Back to JED Games</a>
+
+    <header>
+      <a class="brand" href="#top" aria-label="Tuxedo Grid home">
+        <div class="logo">🐱</div>
+        <div>
+          <h1>Tuxedo Grid <span>Cosy cat merge puzzle</span></h1>
+        </div>
+      </a>
+
+      <nav>
+        <a class="pill" href="#features">Features</a>
+        <a class="pill" href="#screens">Screens</a>
+        <a class="pill" href="#pricing">Pricing</a>
+        <a class="pill cta" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top" class="hero">
+      <div class="card left">
+        <div class="kicker">🐾 <b>New</b> swipe, merge, and evolve your cats</div>
+        <h2 class="title">A cosy 2048-style puzzle with tuxedo cats.</h2>
+        <p class="subtitle">
+          Swipe to move tiles, match cats to evolve them, and keep the board under control.
+          Occasionally a yarn ball appears and blocks your moves — plan ahead!
+        </p>
+
+        <div class="btnrow">
+          <a class="btn primary" href="#screens">See screenshots</a>
+          <a class="btn" href="#features">How it plays</a>
+        </div>
+        <p class="hint">Coming soon to iOS. Made by JED Games.</p>
+      </div>
+
+      <div class="card" style="padding:18px; display:grid; gap:14px;">
+        <div class="shot" style="aspect-ratio:1/1;">
+          <!-- Replace with a square 512x512 promo image -->
+          <img src="../assets/TG_icon_512.png" alt="Tuxedo Grid icon">
+          <div class="label">App icon</div>
+        </div>
+
+        <div class="shot" style="aspect-ratio:1/1;">
+          <!-- Replace with another 512x512 image (promo art) -->
+          <img src="../assets/TG_promo_512_1.png" alt="Tuxedo Grid promo art">
+          <div class="label">Promo art</div>
+        </div>
+      </div>
+    </main>
+
+    <section id="features">
+      <h3 class="sectionTitle">Why it’s fun</h3>
+      <p class="sectionText">Simple rules, satisfying merges, and a cosy pink-and-tuxedo vibe.</p>
+
+      <div class="grid">
+        <div class="card feature">
+          <div class="icon">⬅️</div>
+          <h3>Swipe to move</h3>
+          <p>Classic slide-and-merge gameplay that’s easy to learn and hard to put down.</p>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🐱</div>
+          <h3>Evolve your cats</h3>
+          <p>Match tiles to level up your tuxedo cats and chase your highest evolution.</p>
+        </div>
+
+        <div class="card feature">
+          <div class="icon">🧶</div>
+          <h3>Yarn blocks</h3>
+          <p>A cheeky yarn ball can appear and temporarily block a tile — plan your space.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <h3 class="sectionTitle">Screenshots</h3>
+      <p class="sectionText">Swipe to view more →</p>
+
+      <div class="card carousel">
+        <div class="shots" id="shots" aria-label="Swipeable screenshot carousel">
+          <!-- Update these paths to your real files -->
+          <div class="shotWrap">
+            <div class="shot">
+              <img src="../assets/TG_main.png" alt="Tuxedo Grid main game screen">
+              <div class="label">Main</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot">
+              <img src="../assets/TG_gameplay.png" alt="Tuxedo Grid gameplay with merges">
+              <div class="label">Gameplay</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot">
+              <img src="../assets/TG_menu.png" alt="Tuxedo Grid menu overlay">
+              <div class="label">Menu</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot">
+              <img src="../assets/TG_yarn.png" alt="Tuxedo Grid showing a yarn blocking tile">
+              <div class="label">Yarn Block</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dots" id="dots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <h3 class="sectionTitle">Pricing</h3>
+      <p class="sectionText">Launch plan (easy to change later).</p>
+
+      <div class="twoCol">
+        <div class="card" style="padding:18px">
+          <p style="margin:0;color:var(--muted)">
+            <b style="color:var(--text)">Platform:</b> iOS<br>
+            <b style="color:var(--text)">Genre:</b> Puzzle / Merge<br>
+            <b style="color:var(--text)">Developer:</b> JED Games<br>
+            <b style="color:var(--text)">Price:</b> Free (launch) / optional upgrades later
+          </p>
+        </div>
+
+        <div class="card" style="padding:18px">
+          <p style="margin:0;color:var(--muted)">
+            Want a paid version? We can do:
+            <br>• £0.99–£2.99 premium
+            <br>• or free + remove ads (if you ever add ads)
+            <br>• or cosmetics (cat packs) later
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3 class="sectionTitle">Contact</h3>
+      <p class="sectionText">Feedback, bug reports, or content creator enquiries.</p>
+
+      <div class="card" style="padding:18px">
+        <p style="margin:0 0 8px"><b>Email:</b> <span style="color:var(--muted)">detectivepeppergame@gmail.com</span></p>
+        <p style="margin:0"><b>Privacy:</b> <a href="privacy.html" style="color:var(--muted)">privacy.html</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> JED Games</div>
+      <div class="links">
+        <a href="../detective-pepper/index.html">Detective Pepper</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Dots for swipe carousel
+    const shots = document.getElementById('shots');
+    const wraps = Array.from(shots.querySelectorAll('.shotWrap'));
+    const dots = document.getElementById('dots');
+
+    wraps.forEach((_, i) => {
+      const d = document.createElement('span');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('data-i', String(i));
+      d.addEventListener('click', () => {
+        wraps[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+      dots.appendChild(d);
+    });
+
+    const dotEls = Array.from(dots.querySelectorAll('.dot'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = wraps.indexOf(e.target);
+          dotEls.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+      });
+    }, { root: shots, threshold: 0.6 });
+
+    wraps.forEach(w => io.observe(w));
+  </script>
+</body>
+</html>
