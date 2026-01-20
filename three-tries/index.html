@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Three Tries</title>
+  <meta name="description" content="Three Tries — a new challenge every day. Three attempts. One global score." />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-badge">3T</div>
+        <div>
+          <div style="font-weight:800; letter-spacing:.2px;">Three Tries</div>
+          <div class="small" style="opacity:.9;">Daily reflex games · three attempts · global leaderboard</div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="../">Jed May Studio</a>
+        <a class="active" href="./">Three Tries</a>
+        <a href="../detective-pepper/">Detective Pepper</a>
+        <a href="../tuxedo-grid/">Tuxedo Grid</a>
+      </nav>
+    </header>
+
+    <!-- FULLSCREEN HERO -->
+    <section class="hero">
+      <div class="card" style="grid-column: 1 / -1; text-align:left;">
+        <h1 class="h1" style="margin-bottom:10px;">A new challenge every day.<br/>Just three tries.</h1>
+
+        <p class="sub" style="max-width:60ch;">
+          <strong>Three Tries</strong> is a rotating daily game of quick reflexes and arcade timing.
+          You get <strong>three attempts</strong> to set your best score — then you’re done for the day.
+        </p>
+
+        <div class="buttons" style="margin-top:14px;">
+          <a class="btn primary" href="#how">How it works</a>
+          <a class="btn" href="#screens">Screenshots</a>
+          <a class="btn" href="#footer">Contact</a>
+        </div>
+
+        <div class="pills" style="margin-top:16px;">
+          <span class="pill">Daily game</span>
+          <span class="pill">Three attempts</span>
+          <span class="pill">Global leaderboard</span>
+          <span class="pill">iOS</span>
+        </div>
+
+        <div class="note" style="margin-top:16px;">
+          <div class="small" style="margin:0;">
+            <strong>Coming soon.</strong> Want early access via TestFlight? Email me and I’ll add you when it’s ready.
+          </div>
+          <div class="small" style="margin-top:8px; opacity:.9;">hello@jedmaystudio.com</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="grid" style="margin-top:18px;">
+      <div class="card">
+        <h3 style="margin:0 0 6px;">1) A new game every day</h3>
+        <p class="small" style="margin:0;">
+          Each day brings a different mini-game — reaction, timing, tapping, and retro-style challenges.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px;">2) You get three tries</h3>
+        <p class="small" style="margin:0;">
+          No endless grinding. You have three attempts to post your best score for the day.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 6px;">3) One global score</h3>
+        <p class="small" style="margin:0;">
+          Only your <strong>best</strong> score counts. Climb the global leaderboard and come back tomorrow.
+        </p>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS / MEDIA STRIP -->
+    <section id="screens" class="hero" style="margin-top:18px;">
+      <div class="card" style="grid-column: 1 / -1;">
+        <h2 style="margin:0 0 10px;">Screenshots</h2>
+        <p class="small" style="margin:0 0 14px;">
+          Drop in 3–6 images or short GIFs here. (This section can be a horizontal scroll on mobile.)
+        </p>
+
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;">
+          <div class="note" style="height:180px; display:flex; align-items:center; justify-content:center;">
+            <span class="small" style="opacity:.9;">Screenshot 1</span>
+          </div>
+          <div class="note" style="height:180px; display:flex; align-items:center; justify-content:center;">
+            <span class="small" style="opacity:.9;">Screenshot 2</span>
+          </div>
+          <div class="note" style="height:180px; display:flex; align-items:center; justify-content:center;">
+            <span class="small" style="opacity:.9;">Screenshot 3</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDIO STRIP -->
+    <section class="hero" style="margin-top:18px;">
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="small" style="opacity:.9; margin-bottom:6px;">Built by</div>
+        <h2 style="margin:0 0 10px;">Jed May Studio</h2>
+        <p class="small" style="margin:0 0 14px;">
+          Indie games designed for quick, satisfying moments.
+        </p>
+        <div class="buttons">
+          <a class="btn" href="../">Visit studio</a>
+          <a class="btn" href="mailto:hello@jedmaystudio.com">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer" class="footer">
+      <div>© <span id="year"></span> Jed May Studio</div>
+      <div class="small">
+        <a href="../privacy.html">Privacy</a> ·
+        <a href="mailto:hello@jedmaystudio.com">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
