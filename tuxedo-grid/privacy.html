@@ -5,111 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy — Tuxedo Grid</title>
   <meta name="description" content="Privacy Policy for Tuxedo Grid, a cosy, cat merging puzzle game." />
+  <link rel="stylesheet" href="../styles.css" />
   <link rel="icon" type="image/png" href="../assets/DP_favicon.png">
-
-  <style>
-    :root{
-      --bg:#0f1220;
-      --card:#161a2e;
-      --text:#eef0ff;
-      --muted:#b9bfdc;
-      --border:rgba(255,255,255,.10);
-      --radius:18px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: var(--bg);
-      color: var(--text);
-      line-height:1.6;
-    }
-    .wrap{max-width:900px;margin:0 auto;padding:24px}
-    a{color:inherit}
-    .card{
-      background:rgba(22,26,46,.9);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:22px;
-    }
-    h1{margin-top:0}
-    h2{margin-top:26px}
-    p{color:var(--muted)}
-    .back{
-      display:inline-block;
-      margin-bottom:18px;
-      text-decoration:none;
-      font-size:14px;
-      color:var(--muted);
-    }
-    .back:hover{text-decoration:underline;color:var(--text)}
-    footer{
-      margin-top:28px;
-      font-size:13px;
-      color:var(--muted);
-    }
-  </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <a href="index.html" class="back">← Back to Tuxedo Grid</a>
+  <div class="container">
+    <header class="nav">
+      <a href="./" class="brand">
+        <div class="brand-badge" style="background: linear-gradient(135deg, var(--pink), var(--purple));">TG</div>
+        <div>
+          <div style="font-weight:800;">Tuxedo Grid</div>
+          <div class="small">Cosy cat merge puzzle</div>
+        </div>
+      </a>
 
-    <div class="card">
-      <h1>Privacy Policy</h1>
+      <nav class="nav-links">
+        <a href="../">Home</a>
+        <a href="../three-tries/">Three Tries</a>
+        <a href="../detective-pepper/">Detective Pepper</a>
+        <a href="./">Tuxedo Grid</a>
+      </nav>
+    </header>
 
-      <p>
-        Tuxedo Grid is a cat merging puzzle game designed to be played without
-        accounts, tracking, or data collection.
-      </p>
-<p><strong>Last updated:</strong> 14 January 2026</p>
-      <h2>Information We Collect</h2>
-      <p>
-        Tuxedo Grid does <strong>not</strong> collect, store, or share any personal
-        information.
-      </p>
+    <section class="hero-min">
+      <div class="card" style="border: 3px solid var(--text);">
+        <a href="./" class="text-link" style="display: inline-block; margin-bottom: 16px;">← Back to Tuxedo Grid</a>
 
-      <ul>
-        <li>No account creation</li>
-        <li>No analytics or tracking</li>
-        <li>No advertising identifiers</li>
-        <li>No third-party SDKs that collect data</li>
-      </ul>
+        <h1 class="h1">Privacy <span class="highlight">Policy</span></h1>
+        <p class="small" style="margin-bottom: 24px;"><strong>Last updated:</strong> 14 January 2026</p>
 
-      <h2>Device Data</h2>
-      <p>
-        All game progress (such as best score) is stored locally on your device
-        only (e.g., using iOS local storage / UserDefaults). This data never leaves your device.
-      </p>
-      
-      <h2>Third-Party Services</h2>
-      <p>
-        Tuxedo Grid does not use third-party services that collect data, such as analytics,
-        advertising, or tracking SDKs.
-      </p>
-      
-      <h2>Children’s Privacy</h2>
-      <p>
-        Tuxedo Grid does not knowingly collect any personal data from children
-        or adults. The game is designed to be safe and family-friendly.
-      </p>
+        <p class="sub" style="margin-bottom: 24px;">
+          Tuxedo Grid is a cat merging puzzle game designed to be played without
+          accounts, tracking, or data collection.
+        </p>
 
-      <h2>Changes to This Policy</h2>
-      <p>
-        If the app’s features change in a way that affects privacy, this policy will be
-        updated accordingly.
-      </p>
+        <h2 style="margin-top: 0;">Information We Collect</h2>
+        <p class="small" style="margin-bottom: 16px;">
+          Tuxedo Grid does <strong>not</strong> collect, store, or share any personal information.
+        </p>
 
-      <h2>Contact</h2>
-      <p>
-        If you have questions about this Privacy Policy, you can contact us at:
-        <br />
-        <strong>Email:</strong> <em>detectivepeppergame@gmail.com</em>
-      </p>
-    </div>
+        <div class="pills" style="margin-bottom: 24px;">
+          <span class="pill pink">No accounts</span>
+          <span class="pill purple">No tracking</span>
+          <span class="pill orange">No ads</span>
+        </div>
 
-    <footer>
-      © <span id="year"></span> Tuxedo Grid
+        <h2>Device Data</h2>
+        <p class="small" style="margin-bottom: 24px;">
+          All game progress (such as best score) is stored locally on your device
+          only (e.g., using iOS local storage / UserDefaults). This data never leaves your device.
+        </p>
+
+        <h2>Third-Party Services</h2>
+        <p class="small" style="margin-bottom: 24px;">
+          Tuxedo Grid does not use third-party services that collect data, such as analytics,
+          advertising, or tracking SDKs.
+        </p>
+
+        <h2>Children's Privacy</h2>
+        <p class="small" style="margin-bottom: 24px;">
+          Tuxedo Grid does not knowingly collect any personal data from children
+          or adults. The game is designed to be safe and family-friendly.
+        </p>
+
+        <h2>Changes to This Policy</h2>
+        <p class="small" style="margin-bottom: 24px;">
+          If the app's features change in a way that affects privacy, this policy will be
+          updated accordingly.
+        </p>
+
+        <h2>Contact</h2>
+        <p class="small" style="margin-bottom: 0;">
+          If you have questions about this Privacy Policy, you can contact us at:
+          <br><a href="mailto:hello@jedmaystudio.com" class="text-link">hello@jedmaystudio.com</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Tuxedo Grid</div>
+      <div class="small">
+        <a href="./">Game</a> ·
+        <a href="mailto:hello@jedmaystudio.com">Contact</a>
+      </div>
     </footer>
   </div>
 
