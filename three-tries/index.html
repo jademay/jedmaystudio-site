@@ -7,6 +7,78 @@
   <meta name="description" content="Three Tries — a new challenge every day. Three attempts. One global score." />
   <link rel="stylesheet" href="../styles.css" />
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+  <style>
+    /* Screenshot carousel */
+    .shots{
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 4px 16px;
+    }
+    .shots::-webkit-scrollbar{ height: 8px; }
+    .shots::-webkit-scrollbar-thumb{
+      background: var(--orange);
+      border-radius: 999px;
+    }
+    .shotWrap{
+      flex: 0 0 280px;
+      scroll-snap-align: start;
+    }
+    @media (max-width: 600px){
+      .shotWrap{ flex-basis: 85%; }
+    }
+    .shot{
+      aspect-ratio: 9 / 19.5;
+      width: 100%;
+      border-radius: 16px;
+      border: 3px solid var(--text);
+      overflow: hidden;
+      background: #fff;
+      position: relative;
+    }
+    .shot img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .shot .label{
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--orange);
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+
+    .dots{
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(249, 115, 22, 0.3);
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s ease;
+    }
+    .dot:hover{ background: rgba(249, 115, 22, 0.5); }
+    .dot.active{
+      background: var(--orange);
+      transform: scale(1.3);
+    }
+  </style>
 </head>
 
 <body>
@@ -97,21 +169,41 @@
     <section id="screens">
       <div class="games-title-row">
         <h2>Screenshots</h2>
-        <p class="small">Coming soon</p>
+        <p class="small">Swipe to view more</p>
       </div>
 
-      <div class="card" style="border: 3px solid var(--text); padding: 24px;">
-        <div class="app-grid">
-          <div class="note" style="height: 200px; display: flex; align-items: center; justify-content: center;">
-            <span class="small">Screenshot 1</span>
+      <div class="card" style="border: 3px solid var(--text); padding: 16px;">
+        <div class="shots" id="shots" aria-label="Swipeable screenshot carousel">
+          <div class="shotWrap">
+            <div class="shot">
+              <img src="assets/mainpagepatternmatch.jpeg" alt="Three Tries main menu">
+              <div class="label">Main Menu</div>
+            </div>
           </div>
-          <div class="note" style="height: 200px; display: flex; align-items: center; justify-content: center;">
-            <span class="small">Screenshot 2</span>
+
+          <div class="shotWrap">
+            <div class="shot">
+              <img src="assets/patternmatchgameplay.jpeg" alt="Pattern Match gameplay">
+              <div class="label">Gameplay</div>
+            </div>
           </div>
-          <div class="note" style="height: 200px; display: flex; align-items: center; justify-content: center;">
-            <span class="small">Screenshot 3</span>
+
+          <div class="shotWrap">
+            <div class="shot">
+              <img src="assets/patternmatchgameover.jpeg" alt="Pattern Match game over screen">
+              <div class="label">Game Over</div>
+            </div>
+          </div>
+
+          <div class="shotWrap">
+            <div class="shot">
+              <img src="assets/patternmatchleaderboard.jpeg" alt="Pattern Match leaderboard">
+              <div class="label">Leaderboard</div>
+            </div>
           </div>
         </div>
+
+        <div class="dots" id="dots" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -148,6 +240,34 @@
       menuToggle.classList.toggle('open');
       navLinks.classList.toggle('open');
     });
+
+    // Dots for swipe carousel
+    const shots = document.getElementById('shots');
+    const wraps = Array.from(shots.querySelectorAll('.shotWrap'));
+    const dots = document.getElementById('dots');
+
+    wraps.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.type = 'button';
+      d.setAttribute('aria-label', `Screenshot ${i + 1}`);
+      d.addEventListener('click', () => {
+        wraps[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dots.appendChild(d);
+    });
+
+    const dotEls = Array.from(dots.querySelectorAll('.dot'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = wraps.indexOf(e.target);
+          dotEls.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+      });
+    }, { root: shots, threshold: 0.6 });
+
+    wraps.forEach(w => io.observe(w));
   </script>
 </body>
 </html>
