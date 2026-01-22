@@ -137,6 +137,31 @@
       .hero-split{ grid-template-columns: 1fr; }
       .promo-grid{ max-width: 320px; margin: 0 auto; }
     }
+
+    /* App icon in hero */
+    .hero-app-icon{
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      border: 3px solid var(--text);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .app-icon-link:hover .hero-app-icon{
+      transform: rotate(-3deg) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    @media (max-width: 600px){
+      .hero-app-icon{
+        width: 60px;
+        height: 60px;
+        top: 16px;
+        right: 16px;
+      }
+    }
   </style>
 </head>
 
@@ -167,7 +192,10 @@
 
     <!-- HERO -->
     <section class="hero-split">
-      <div class="card" style="border: 3px solid var(--text); padding: 32px;">
+      <div class="card" style="border: 3px solid var(--text); padding: 32px; position: relative;">
+        <a href="#" class="app-icon-link" title="Coming soon to the App Store">
+          <img src="assets/TG_app_icon.png" alt="Tuxedo Grid app icon" class="hero-app-icon">
+        </a>
         <div class="pills" style="margin-bottom: 16px;">
           <span class="pill pink">New</span>
           <span class="pill purple">Merge puzzle</span>
