@@ -151,6 +151,12 @@
         </div>
       </a>
 
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <nav class="nav-links">
         <a href="../">Home</a>
         <a href="../three-tries/">Three Tries</a>
@@ -298,6 +304,13 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
 
     // Dots for swipe carousel
     const shots = document.getElementById('shots');
