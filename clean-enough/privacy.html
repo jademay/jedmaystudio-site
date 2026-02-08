@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Clean Enough</title>
+  <meta name="description" content="Privacy Policy for Clean Enough, a calm household cleaning tracker for iOS." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+
+<body>
+  <div class="container">
+    <header class="nav">
+      <a href="./" class="brand">
+        <div class="brand-badge" style="background: linear-gradient(135deg, var(--green), var(--yellow));">CE</div>
+        <div>
+          <div style="font-weight:800;">Clean Enough</div>
+          <div class="small">Calm cleaning tracker</div>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links">
+        <a href="../">Home</a>
+        <a href="../three-tries/">Three Tries</a>
+        <a href="../detective-pepper/">Detective Pepper</a>
+        <a href="../tuxedo-grid/">Tuxedo Grid</a>
+        <a href="./">Clean Enough</a>
+      </nav>
+    </header>
+
+    <section class="hero-min">
+      <div class="card" style="border: 3px solid var(--text);">
+        <a href="./" class="text-link" style="display: inline-block; margin-bottom: 16px;">← Back to Clean Enough</a>
+
+        <h1 class="h1">Privacy <span class="highlight">Policy</span></h1>
+        <p class="small" style="margin-bottom: 24px;"><strong>Last updated:</strong> February 2026</p>
+
+        <p class="sub" style="margin-bottom: 24px;">
+          Clean Enough is designed with privacy in mind. All your data stays on your device.
+          We do not collect, transmit, or store any personal information.
+        </p>
+
+        <h2 style="margin-top: 0;">Local Data</h2>
+        <p class="small" style="margin-bottom: 12px;">All data is stored only on your device and never leaves it:</p>
+        <ul class="small" style="margin: 0 0 24px; padding-left: 20px; line-height: 1.8;">
+          <li>Cleaning items and when they were last cleaned</li>
+          <li>Cleaning history and average intervals</li>
+          <li>Custom items you create</li>
+          <li>Household settings (pets, allergies, household size)</li>
+          <li>User notes on items</li>
+        </ul>
+
+        <h2>No Cloud Services</h2>
+        <p class="small" style="margin-bottom: 24px;">
+          Clean Enough does not use any cloud servers, analytics, or tracking services.
+          There are no accounts, no sign-ins, and no data sent over the network.
+        </p>
+
+        <h2>In-App Purchases</h2>
+        <p class="small" style="margin-bottom: 24px;">
+          Purchases are handled entirely by Apple through the App Store. We do not collect or store your payment
+          information. Please refer to Apple's privacy policy for details on how they handle purchase data.
+        </p>
+
+        <h2>Data Deletion</h2>
+        <p class="small" style="margin-bottom: 24px;">
+          Since all data is stored locally on your device, deleting the app removes all data completely.
+        </p>
+
+        <div class="note" style="margin-bottom: 24px;">
+          <strong>Note:</strong> If you have questions about how your data is handled, you can contact us using the details below.
+        </div>
+
+        <h2>Contact</h2>
+        <p class="small" style="margin-bottom: 0;">
+          If you have questions about this Privacy Policy, please contact:
+          <br><a href="mailto:support@jedmaystudio.com" class="text-link">support@jedmaystudio.com</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Jed May Studio</div>
+      <div class="small">
+        <a href="../privacy.html">Privacy</a> ·
+        <a href="mailto:hello@jedmaystudio.com">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
