@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clean Enough — Calm Household Cleaning Tracker</title>
+  <meta name="description" content="Clean Enough — a calm cleaning tracker. No deadlines, no nagging. Just a gentle check on what might need attention." />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+
+<body>
+  <div class="container">
+    <header class="nav">
+      <a href="./" class="brand">
+        <div class="brand-badge" style="background: linear-gradient(135deg, var(--green), var(--yellow));">CE</div>
+        <div>
+          <div style="font-weight:800;">Clean Enough</div>
+          <div class="small">Calm cleaning tracker</div>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links">
+        <a href="../">Home</a>
+        <a href="../three-tries/">Three Tries</a>
+        <a href="../detective-pepper/">Detective Pepper</a>
+        <a href="../tuxedo-grid/">Tuxedo Grid</a>
+        <a class="active" href="./">Clean Enough</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-min">
+      <div class="card" style="border: 3px solid var(--text); position: relative;">
+        <h1 class="h1">A calm check on<br/><span class="highlight">what's getting old.</span></h1>
+
+        <p class="sub">
+          Clean Enough tracks when you last cleaned things around the house
+          and gently shows what might need attention. No deadlines. No nagging.
+          No judgement.
+        </p>
+
+        <div class="pills">
+          <span class="pill green">No deadlines</span>
+          <span class="pill yellow">Household</span>
+          <span class="pill blue">iOS</span>
+        </div>
+
+        <div class="top-cta" style="margin-top: 20px;">
+          <a class="btn primary" href="#how">How it works</a>
+          <a class="btn" href="#features">Features</a>
+        </div>
+
+        <div class="note" style="margin-top: 20px;">
+          <strong>Coming soon.</strong> Want early access via TestFlight? Email me and I'll add you when it's ready.
+          <br><a href="mailto:hello@jedmaystudio.com" class="text-link" style="margin-top: 8px; display: inline-block;">hello@jedmaystudio.com</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <div class="games-title-row">
+        <h2>How it works</h2>
+      </div>
+
+      <div class="app-grid">
+        <div class="card" style="border: 3px solid var(--green);">
+          <h3 style="margin: 0 0 8px;">1. Recommended ranges</h3>
+          <p class="small" style="margin: 0;">
+            Each item has a typical range — for example, bedsheets every 7–10 days.
+            Based on general guidance, not rigid rules.
+          </p>
+        </div>
+
+        <div class="card" style="border: 3px solid var(--yellow);">
+          <h3 style="margin: 0 0 8px;">2. Three gentle statuses</h3>
+          <p class="small" style="margin: 0;">
+            Fresh means you're well within the range. Borderline means you're approaching the end.
+            Probably due means it's past the window — but there's no rush.
+          </p>
+        </div>
+
+        <div class="card" style="border: 3px solid var(--blue);">
+          <h3 style="margin: 0 0 8px;">3. Open when you're curious</h3>
+          <p class="small" style="margin: 0;">
+            Mark things as cleaned when you get around to it. No streaks, no scores, no pressure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+      <div class="games-title-row">
+        <h2>Features</h2>
+        <p class="small">Calm by design</p>
+      </div>
+
+      <div class="app-grid">
+        <div class="card" style="border: 3px solid var(--green);">
+          <h3 style="margin: 0 0 8px;">Adjusts to your home</h3>
+          <p class="small" style="margin: 0;">
+            Have pets, allergies, or a larger household? Ranges adjust automatically to reflect that things may need attention sooner.
+          </p>
+        </div>
+
+        <div class="card" style="border: 3px solid var(--yellow);">
+          <h3 style="margin: 0 0 8px;">Custom items</h3>
+          <p class="small" style="margin: 0;">
+            Add your own items with custom ranges. Track anything that matters to you.
+          </p>
+        </div>
+
+        <div class="card" style="border: 3px solid var(--blue);">
+          <h3 style="margin: 0 0 8px;">Cleaning history</h3>
+          <p class="small" style="margin: 0;">
+            See when you last cleaned each item and your average interval over time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDIO -->
+    <section class="about-min">
+      <div class="card" style="border: 3px solid var(--text);">
+        <p class="small" style="margin: 0 0 4px;">Built by</p>
+        <h2 style="margin: 0 0 8px;">Jed May Studio</h2>
+        <p class="sub" style="margin: 0 0 16px;">
+          Indie games and apps designed for quick, satisfying moments.
+        </p>
+        <div class="top-cta">
+          <a class="btn" href="../">Visit studio</a>
+          <a class="btn" href="mailto:hello@jedmaystudio.com">Say hello</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Jed May Studio</div>
+      <div class="small">
+        <a href="../privacy.html">Privacy</a> ·
+        <a href="mailto:hello@jedmaystudio.com">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

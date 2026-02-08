@@ -387,6 +387,7 @@ h3{
 .app-card[data-game="three-tries"]:hover{ border-color: var(--orange); }
 .app-card[data-game="detective-pepper"]:hover{ border-color: var(--green); }
 .app-card[data-game="tuxedo-grid"]:hover{ border-color: var(--purple); }
+.app-card[data-game="clean-enough"]:hover{ border-color: var(--green); }
 
 .app-icon{
   width: 80px;
